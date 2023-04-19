@@ -89,6 +89,25 @@ function agregarAlCarritoClicked(event){
     var precio = item.getElementsByClassName('item-price')[0].innerText;
     var imagenSrc = item.getElementsByClassName('img-item').src;
     console.log(imagenSrc);
+
+    //FUNCIÓN QUE AGREGA EL ITEM AL CARRITO, SE MANDA POR PARÁMETROS LOS VALORES.
+
+    agregarItemAlCarrito(titulo, precio, imagenSrc);
+}
+
+function agregarItemAlCarrito(titulo, precio, imagenSrc){
+    var item = document.createElement('div');
+    item.classList.add = 'item';
+    var itemsCarrito = document.getElementsByClassName('shopping-cart-items')[0];
+
+    //SE CONTROLA QUE EL ITEM QUE ESTA INGRESANDO NO SE ENCUENTRA YA EN EL CARRITO.
+
+    var nombresItemsCarrito = itemsCarrito.getElementsByClassName('cart-item-title');
+    for(var i=0; i < nombresItemsCarrito.length;i++){
+        if(nombresItemsCarrito [i].innerText==titulo){
+            alert("EL ITEM YA SE ENCUENTRA EN EL CARRITO.");
+        }
+    }
 }
 
 //FUNCIÓN QUE CONTROLA CUANDO HAY ITEMS EN EL CARRITO, SI NO HAY ESTE SE OCULTA.
