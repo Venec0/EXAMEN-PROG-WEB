@@ -100,7 +100,7 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
     item.classList.add = 'item';
     var itemsCarrito = document.getElementsByClassName('shopping-cart-items')[0];
 
-    //SE CONTROLA QUE EL ITEM QUE ESTA INGRESANDO NO SE ENCUENTRA YA EN EL CARRITO.
+    //SE CONTROLA QUE EL ITEM QUE ESTA INGRESANDO SE ENCUENTRA YA EN EL CARRITO.
 
     var nombresItemsCarrito = itemsCarrito.getElementsByClassName('cart-item-title');
     for(var i=0; i < nombresItemsCarrito.length;i++){
