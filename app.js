@@ -1,4 +1,4 @@
-//VARIABLE QUE MANTIENE CARRITO VISIBLE
+    //VARIABLE QUE MANTIENE CARRITO VISIBLE
 
 var Carritovisible=false;
 
@@ -34,7 +34,8 @@ function ready(){
     var botonesRestarCantidad = document.getElementsByClassName('restar-cantid');
     for(var i=0;i<botonesRestarCantidad.length; i++){
         var button = botonesRestarCantidad[i];
-        button.addEventListener('click',restarCantidad);
+        button.addEventListener('click', restarCantidad);
+    }
 
     //SE AGREGA FUNCIONALIDAD AL BOTÓN "AGREGAR AL CARRITO"
 
@@ -146,7 +147,6 @@ function actualizarTotalCarrito(){
     
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total.toLocaleString("es");
     }
-}
 /* COSAS POR HACER:
 
     TODO: AGREGAR FUNCIÓN DE AGREGAR ITEM AL CARRITO.
@@ -160,9 +160,9 @@ function actualizarTotalCarrito(){
 
 /* COSAS HECHAS: 
     
-    *AGREGAR AJUSTES EN LA RESTA DEL ITEM.
-    *AGREGAR FUNCIÓN SUMAR ITEM AL CARRITO.
-    *AGREGAR FUNCIÓN DE RESTAR ITEM DEL CARRITO.
-    *AGREGAR AJUSTES EN LA SUMA DE CANTIDAD DE LOS CARRITOS.
+    *AGREGADO AJUSTES EN LA RESTA DEL ITEM.
+    *AGREGADA FUNCIÓN SUMAR ITEM AL CARRITO.
+    *AGREGADA FUNCIÓN DE RESTAR ITEM DEL CARRITO.
+    *AGREGADO AJUSTES EN LA SUMA DE CANTIDAD DE LOS CARRITOS.
 
     */
