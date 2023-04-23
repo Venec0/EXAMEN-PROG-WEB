@@ -44,6 +44,23 @@ function ready(){
         var button = botonesAgregarAlCarrito[i];
         button.addEventListener('click',agregarAlCarritoClicked);
     }
+
+    //SE AGREGA FUNCIONALIDAD AL BOTÓN "REALIZAR PAGO"
+
+    document.getElementsByClassName('pay-button')[0].addEventListener('click', pagarClicked)
+}
+
+function pagarClicked(event){
+    alert("GRACIAS POR SU COMPRA!");
+
+    //SE ELIMINAN TODOS LOS ITEMS DEL CARRITO.
+
+    var carritoItems = document.getElementsByClassName('shopping-cart-items')[0];
+    while (carritoItems.hasChildNodes()){
+        carritoItems.removeChild(carritoItems.firstChild)
+    }
+    actualizarTotalCarrito();
+    ocultarCarrito();
 }
 
 //ELIMINACIÓN DEL ITEM DEL CARRITO.
@@ -94,6 +111,20 @@ function agregarAlCarritoClicked(event){
     //FUNCIÓN QUE AGREGA EL ITEM AL CARRITO, SE MANDA POR PARÁMETROS LOS VALORES.
 
     agregarItemAlCarrito(titulo, precio, imagenSrc);
+
+    //SE HACE VISIBLE EL CARRITO CUANDO SE AGREGA POR PRIMERA VEZ.
+
+    hacerVisibleCarrito();
+}
+
+function hacerVisibleCarrito(){
+    Carritovisible = true;
+    var carrito = document.getElementsByClassName('shopping-cart')[0];
+    carrito.style.marginRight = '0';
+    carrito.style = '1';
+
+    var items = document.getElementsByClassName('items-container')[0];
+    items.style.width = '60%';
 }
 
 function agregarItemAlCarrito(titulo, precio, imagenSrc){
@@ -109,6 +140,42 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
             alert("EL ITEM YA SE ENCUENTRA EN EL CARRITO.");
         }
     }
+    
+    //SE AGREGA EL ITEM AL CARRITO.
+
+    var itemCarritoContenido = `
+    <div class="item-cart">
+        <img src="${imagenSrc}" alt="" width="80px">
+        <div class="cart-item-details">
+            <span class="cart-item-title">${titulo}</span>
+            <div class="amount-selector">
+                <i class="fa-solid fa-minus restar-cantid"></i>
+                <input type="text" value="1" class="item-cart-amount" disabled>
+                <i class="fa-solid fa-plus sumar-cantid"></i>
+            </div>
+            <span class="cart-item-price">${precio}</span>
+        </div>
+        <span class="btn-delete">
+            <i class="fa-solid fa-trash"></i>
+        </span>
+    </div>
+    `
+    item.innerHTML = itemCarritoContenido;
+    itemsCarrito.append(item);
+
+    //FUNCIONALIDAD QUE PERMITE ELIMINAR EL NUEVO ITEM DEL CARRITO.
+
+    item.getElementsByClassName('btn-delete')[0].addEventListener('click',eliminarItemCarrito);
+
+    //FUNCIÓN QUE PERMITE SUMAR EL ITEM NUEVO DEL CARRITO.
+
+    var botonSumarCantidad = item.getElementsByClassName('sumar-cantid')[0];
+    botonSumarCantidad.addEventListener('click',sumarCantidad);
+
+    //FUNCIÓN QUE PERMITE RESTAR EL ITEM NUEVO DEL CARRITO.
+
+    var botonRestarCantidad = item.getElementsByClassName('restar-cantid')[0];
+    botonRestarCantidad.addEventListener('click',restarCantidad);   
 }
 
 //FUNCIÓN QUE CONTROLA CUANDO HAY ITEMS EN EL CARRITO, SI NO HAY ESTE SE OCULTA.
@@ -149,8 +216,6 @@ function actualizarTotalCarrito(){
     }
 /* COSAS POR HACER:
 
-    TODO: AGREGAR FUNCIÓN DE AGREGAR ITEM AL CARRITO.
-    TODO: AGREGAR FUNCIÓN REALIZAR PAGO.
     TODO: REDIRECCIONAMIENTO DE PÁGINAS.
     TODO: INCORPORAR UNA BASE DE DATOS CON Y QUE FUNCIONE CON EL LOGIN DEL USUARIO.
     TODO: AGREGAR FUNCIÓN AL CARRITO EL CUAL SE ENCARGA DE UN PEQUEÑO CARRITO EN <HEADER> EL CUAL SE ENCARGA DE DESPLEGAR
@@ -159,7 +224,9 @@ function actualizarTotalCarrito(){
 */
 
 /* COSAS HECHAS: 
-    
+
+    *AGREGADA FUNCIÓN REALIZAR PAGO.
+    *AGREGADA FUNCIÓN DE AGREGAR ITEM AL CARRITO.
     *AGREGADO AJUSTES EN LA RESTA DEL ITEM.
     *AGREGADA FUNCIÓN SUMAR ITEM AL CARRITO.
     *AGREGADA FUNCIÓN DE RESTAR ITEM DEL CARRITO.
