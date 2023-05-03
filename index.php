@@ -8,8 +8,8 @@
     <title>LOGIN & REGISTRATION | Memoriesdistro</title>
     <link rel="stylesheet" href="CSS/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous/">
-    <form action="PHP.PHP" method="post">
 </head>
+
 <body>
     
     <header>
@@ -33,36 +33,33 @@
 
             <div class="form-box login">
                 <h2>Login</h2>
-                <form action="#">
+                <?php
+                    if (isset($_POST['submit'])) {
+                        $email = $_POST['email'];
+                        $password = $_POST['password'];
+                        echo "<p>Bienvenido, $email. Tu contraseña es $password.</p>";
+                    }
+                ?>
+                <form action="#" method="post">
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="mail-outline"></ion-icon>
                         </span>
-                        <input type="Email" required>
+                        <input type="email" name="email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
-                        <input type="password" required maxlength="20">
+                        <input type="password" name="password" required>
                         <label>Contraseña</label>
                     </div>
                     <div class="remember-forgot">
                         <label><input type="checkbox"> Recuérdame.</label>
                         <a href="#">Olvidé mi contraseña</a>
                     </div>
-                    <button id="unico" type="button" class="btnLOGIN">Login</button>
+                    <button type="submit" name="submit" class="btnLOGIN">Login</button>
                 </form>
             </div>
         </div>
-        
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>"
-        <script src="validaciones.js"></script>
-        <script src="script.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    </div>
-</body>
-</html>
