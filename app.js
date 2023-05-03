@@ -105,7 +105,7 @@ function agregarAlCarritoClicked(event){
     var titulo = item.getElementsByClassName('item-title')[0].innerText;
     console.log
     var precio = item.getElementsByClassName('item-price')[0].innerText;
-    var imagenSrc = item.getElementsByClassName('img-item').src;
+    var imagenSrc = item.getElementsByClassName('img-item')[0].src;
     console.log(imagenSrc);
 
     //FUNCIÓN QUE AGREGA EL ITEM AL CARRITO, SE MANDA POR PARÁMETROS LOS VALORES.
@@ -115,6 +115,9 @@ function agregarAlCarritoClicked(event){
     //SE HACE VISIBLE EL CARRITO CUANDO SE AGREGA POR PRIMERA VEZ.
 
     hacerVisibleCarrito();
+
+    //ACTUALIZA EL VALOR
+    actualizarTotalCarrito();
 }
 
 function hacerVisibleCarrito(){
@@ -138,6 +141,7 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
     for(var i=0; i < nombresItemsCarrito.length;i++){
         if(nombresItemsCarrito [i].innerText==titulo){
             alert("EL ITEM YA SE ENCUENTRA EN EL CARRITO.");
+            return;
         }
     }
     
