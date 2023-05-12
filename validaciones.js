@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#unico").click(function() {
         var email = $("input[type='email']").val();
-        var password = $("input[type='contraseña']").val();
+        var password = $("input[type='password']").val();
         var error_message = "";
         
         if (email == "") {
