@@ -16,7 +16,7 @@ $(document).ready(function() {
             alert(error_message);
             return false;
         } else {
-            // Aquí puedes agregar la lógica para enviar el formulario
+            alert('¡Inicio de sesión exitoso!')
         }
     });
 });

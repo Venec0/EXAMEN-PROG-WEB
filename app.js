@@ -1,4 +1,4 @@
-    //VARIABLE QUE MANTIENE CARRITO VISIBLE
+//VARIABLE QUE MANTIENE CARRITO VISIBLE
 
 var Carritovisible=false;
 
@@ -218,12 +218,37 @@ function actualizarTotalCarrito(){
     
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total.toLocaleString("es");
     }
+
+/* VALIDACIONES */
+
+//VALIDACIÓN QUE INDICA QUE SE AGREGÓ UN ITEM AL CARRITO.
+
+    $(document).ready(function() {
+        $('.buttom-item').click(function() {
+          var itemTitle = $(this).siblings('.item-title').text();
+          var itemPrice = $(this).siblings('.item-price').text();
+          alert('Has agregado "' + itemTitle + '" al carrito. Precio: ' + itemPrice);
+        });
+      });
+
+//VALIDACIÓN QUE OCULTA CARRITO DE COMPRAS.
+    $(document).ready(function() {
+        $('.shopping-cart').hide();
+    });
+//VALIDACIÓN QUE HACE APARECER Y DESAPARECER CARRITO DE COMPRAS AL APRETAR MI CUENTA.
+    $(document).ready(function() {
+        $('.btnLogin-popup').click(function() {
+          $('.shopping-cart').toggle();
+        });
+      });
+      
 /* COSAS POR HACER:
 
     TODO: REDIRECCIONAMIENTO DE PÁGINAS.
     TODO: INCORPORAR UNA BASE DE DATOS CON Y QUE FUNCIONE CON EL LOGIN DEL USUARIO.
     TODO: AGREGAR FUNCIÓN AL CARRITO EL CUAL SE ENCARGA DE UN PEQUEÑO CARRITO EN <HEADER> EL CUAL SE ENCARGA DE DESPLEGAR
-    TODO EL CARRITO COMPLETO A UN LADO.
+    TODO: EL CARRITO COMPLETO A UN LADO.
+    TODO: AGREGAR VALIDACIONES.
 
 */
 
