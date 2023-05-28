@@ -74,7 +74,27 @@ header {
     transition: .5s;
 }
 
+.navigation .btnMiCompra {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    font-weight: white;
+    margin-left: 40px;
+    transition: .5s;
+}
+
 .navigation .btnLogin-popup:hover {
+    background: white;
+    color: #000000;
+}
+
+.navigation .btnMiCompra:hover {
     background: white;
     color: #000000;
 }
@@ -131,7 +151,7 @@ header {
     font-size: 22px;
 }
 
-.items-container .item .buttom-item {
+.items-container .item .button-item {
     display: block;
     margin: 10px auto;
     border: none;
@@ -268,7 +288,7 @@ header {
     scale: 1.05;
 }
 
-@media screen and (max-widht:850px) {
+@media screen and (max-width:850px) {
     .container {
         display: block;
     }

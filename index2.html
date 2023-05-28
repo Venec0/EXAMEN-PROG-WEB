@@ -17,6 +17,7 @@
             <a href="#">Acerca de</a>
             <a href="#">Contacto</a>
             <button class="btnLogin-popup">MI CUENTA</button>
+            <button class="btnMiCompra">MI COMPRA</button>
         </nav>
     </header>
     <section class="container">
@@ -25,34 +26,48 @@
                 <span class="item-title">Michael Jackson Number Ones</span>
                 <img src="IMG/MichaelsNumberOnes.jpg" alt="" class="img-item">
                 <span class="item-price">$38.990</span>
-                <button class="buttom-item">AGREGAR AL CARRITO</button>
+                <button class="button-item" onclick="addToCart('Michael Jackson Numebr Ones')">AGREGAR AL CARRITO</button>
             </div>
             <div class="item">
                 <span class="item-title">The Best of Daryl Hal & John Oates</span>
                 <img src="IMG/R-1703267-1328281844.jpg" alt="" class="img-item">
                 <span class="item-price">$39.500</span>
-                <button class="buttom-item">AGREGAR AL CARRITO</button>
+                <button class="button-item" onclick="addToCart('The Best Of Daryll Hall & John Oates')">AGREGAR AL CARRITO</button>
             </div>
             <div class="item">
                 <span class="item-title">Queen Greatest Hits</span>
                 <img src="IMG/QUEEN_ALBUM.jpg" alt="" class="img-item">
                 <span class="item-price">$49.150</span>
-                <button class="buttom-item">AGREGAR AL CARRITO</button>
+                <button class="button-item" onclick="addToCart('Queen Greatest Hits')">AGREGAR AL CARRITO</button>
             </div>
             <div class="item">
                 <span class="item-title">Linkin Park Meteora</span>
                 <img src="IMG/LINKINPARK_METEORAALBUM.jpg" alt="" class="img-item">
                 <span class="item-price">$37.990</span>
-                <button class="buttom-item">AGREGAR AL CARRITO</button>
+                <button class="button-item" onclick="addToCart('Linkin Park Meteora')">AGREGAR AL CARRITO</button>
             </div>
             <div class="item">
                 <span class="item-title">Bring Me The Horizon Sempiternal</span>
                 <img src="IMG/bring-me-the-horizon-sempiternal-phonograph-record-lp-record-album-png-favpng-ZZc98jni8BRbNJxKQrfk4Q5XE.jpg" alt="" class="img-item">
                 <span class="item-price">$30.990</span>
-                <button class="buttom-item">AGREGAR AL CARRITO</button>
+                <button class="button-item" onclick="addToCart('Bring Me The Horizon Sempiternal')">AGREGAR AL CARRITO</button>
             </div>
         </div>
-
+        <form action="agregar_articulo.php" method="POST">
+            <label for="nombre">Nombre del artículo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br>
+        
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            <br>
+        
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" required>
+            <br>
+        
+            <input type="submit" value="Agregar artículo">
+        </form>
         <div class="shopping-cart">
             <div class="shopping-cart-header">
                 <h2>TU CARRITO</h2>
