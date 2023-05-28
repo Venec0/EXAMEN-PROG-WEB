@@ -107,6 +107,7 @@ function agregarAlCarritoClicked(event){
     var precio = item.getElementsByClassName('item-price')[0].innerText;
     var imagenSrc = item.getElementsByClassName('img-item')[0].src;
     console.log(imagenSrc);
+    
 
     //FUNCIÓN QUE AGREGA EL ITEM AL CARRITO, SE MANDA POR PARÁMETROS LOS VALORES.
 
@@ -123,8 +124,7 @@ function agregarAlCarritoClicked(event){
 function hacerVisibleCarrito(){
     Carritovisible = true;
     var carrito = document.getElementsByClassName('shopping-cart')[0];
-    carrito.style.marginRight = '0';
-    carrito.style = '1';
+    carrito.style.display = 'block';
 
     var items = document.getElementsByClassName('items-container')[0];
     items.style.width = '60%';
@@ -132,7 +132,7 @@ function hacerVisibleCarrito(){
 
 function agregarItemAlCarrito(titulo, precio, imagenSrc){
     var item = document.createElement('div');
-    item.classList.add = 'item';
+    item.classList.add('item');
     var itemsCarrito = document.getElementsByClassName('shopping-cart-items')[0];
 
     //SE CONTROLA QUE EL ITEM QUE ESTA INGRESANDO SE ENCUENTRA YA EN EL CARRITO.
@@ -188,8 +188,7 @@ function ocultarCarrito(){
     var carritoItems = document.getElementsByClassName('shopping-cart-items')[0];
     if (carritoItems.childElementCount==0){
         var carrito = document.getElementsByClassName('shopping-cart')[0];
-        carrito.style.marginRight = '-30%'
-        carrito.style.opacity = '0';
+        carrito.style.display = 'none';
         Carritovisible = false;
 
         var items = document.getElementsByClassName('items-container')[0];
@@ -210,8 +209,8 @@ function actualizarTotalCarrito(){
 
         var precio = parseFloat(precioElemento.innerText.replace('$','').replace('.',''));
         var cantidadItem = item.getElementsByClassName('item-cart-amount')[0];
-        console.log(cantidad);
         var cantidad = cantidadItem.value;
+        console.log(cantidad);
         total = total+(precio * cantidad);
     }
     total = Math.round(total*100)/100;
@@ -229,26 +228,23 @@ function actualizarTotalCarrito(){
           var itemPrice = $(this).siblings('.item-price').text();
           alert('Has agregado "' + itemTitle + '" al carrito. Precio: ' + itemPrice);
         });
-      });
 
-//VALIDACIÓN QUE OCULTA CARRITO DE COMPRAS.
-    $(document).ready(function() {
+    //VALIDACIÓN QUE OCULTA CARRITO DE COMPRAS.
         $('.shopping-cart').hide();
-    });
-//VALIDACIÓN QUE HACE APARECER Y DESAPARECER CARRITO DE COMPRAS AL APRETAR MI COMPRA.
-    $(document).ready(function() {
+
+    //VALIDACIÓN QUE HACE APARECER Y DESAPARECER CARRITO DE COMPRAS AL APRETAR MI COMPRA.
         $('.btnMiCompra').click(function() {
-          $('.shopping-cart').toggle();
-        });
+            $('.shopping-cart').toggle();
+          });
       });
       
 /* COSAS POR HACER:
 
     TODO: REDIRECCIONAMIENTO DE PÁGINAS.
-    TODO: INCORPORAR UNA BASE DE DATOS CON Y QUE FUNCIONE CON EL LOGIN DEL USUARIO.
+    TODO: INCORPORAR UNA BASE DE DATOS QUE FUNCIONE CON EL LOGIN DEL USUARIO.
     TODO: AGREGAR FUNCIÓN AL CARRITO EL CUAL SE ENCARGA DE UN PEQUEÑO CARRITO EN <HEADER> EL CUAL SE ENCARGA DE DESPLEGAR.
     TODO: AGREGAR VALIDACIONES.
-    TODO: HACER QUE LOS PRODUCTOS NO APAREZCAN AUTOMÁTICAMENTE EN LA COMPRA. EL USUARIO ESTÁ EN EL DERECHO DE ESCOGER SU PROPIA COMPRA.
+    TODO: HACER QUE LOS DOS PRODUCTOS NO APAREZCAN AUTOMÁTICAMENTE EN LA COMPRA; EL USUARIO ESTÁ EN EL DERECHO DE ESCOGER SU PROPIA COMPRA.
 
 */
 
@@ -261,4 +257,5 @@ function actualizarTotalCarrito(){
     *AGREGADA FUNCIÓN DE RESTAR ITEM DEL CARRITO.
     *AGREGADO AJUSTES EN LA SUMA DE CANTIDAD DE LOS CARRITOS.
     *AGREGADO CARRITO COMPLETO A UN LADO.
-    */
+    *OCULTO CARRITO DE COMPRAS AL ENTRAR EN LA PÁGINA.
+*/
