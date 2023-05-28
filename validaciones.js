@@ -20,6 +20,17 @@ $(document).ready(function() {
             window.location.href = "index2.html";
         }
     });
+
+    // Escucha el evento de cambio en la casilla de texto de correo
+    var emailInput = document.querySelector('input[type="email"]');
+    emailInput.addEventListener('input', function() {
+        if (emailInput.value.length > 0) {
+            emailInput.classList.add('has-value');
+        } else {
+            emailInput.classList.remove('has-value');
+        }
+    });
+
     // Obtener referencia al elemento del checkbox
     var RecuerdameCheckbox = document.getElementById("RecuerdameCheckbox");
 

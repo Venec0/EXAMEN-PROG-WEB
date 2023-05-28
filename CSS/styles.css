@@ -210,7 +210,8 @@ header {
 }
 
 .input-box input:focus~label,
-.input-box input:valid~label {
+.input-box input:valid~label,
+.input-box input.has-value~label {
     top: -5px;
 }
 
