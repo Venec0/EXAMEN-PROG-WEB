@@ -4,7 +4,7 @@ var Carritovisible=false;
 
 //SE ESPERA A QUE LOS ELEMENTOS DE LA PÁGINA CARGUEN PARA QUE EJECUTE SCRIPT
 
-if(document.readyState=='loading'){
+if (document.readyState== 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 }else{
     ready();
@@ -235,9 +235,9 @@ function actualizarTotalCarrito(){
     $(document).ready(function() {
         $('.shopping-cart').hide();
     });
-//VALIDACIÓN QUE HACE APARECER Y DESAPARECER CARRITO DE COMPRAS AL APRETAR MI CUENTA.
+//VALIDACIÓN QUE HACE APARECER Y DESAPARECER CARRITO DE COMPRAS AL APRETAR MI COMPRA.
     $(document).ready(function() {
-        $('.btnLogin-popup').click(function() {
+        $('.btnMiCompra').click(function() {
           $('.shopping-cart').toggle();
         });
       });
@@ -246,9 +246,9 @@ function actualizarTotalCarrito(){
 
     TODO: REDIRECCIONAMIENTO DE PÁGINAS.
     TODO: INCORPORAR UNA BASE DE DATOS CON Y QUE FUNCIONE CON EL LOGIN DEL USUARIO.
-    TODO: AGREGAR FUNCIÓN AL CARRITO EL CUAL SE ENCARGA DE UN PEQUEÑO CARRITO EN <HEADER> EL CUAL SE ENCARGA DE DESPLEGAR
-    TODO: EL CARRITO COMPLETO A UN LADO.
+    TODO: AGREGAR FUNCIÓN AL CARRITO EL CUAL SE ENCARGA DE UN PEQUEÑO CARRITO EN <HEADER> EL CUAL SE ENCARGA DE DESPLEGAR.
     TODO: AGREGAR VALIDACIONES.
+    TODO: HACER QUE LOS PRODUCTOS NO APAREZCAN AUTOMÁTICAMENTE EN LA COMPRA. EL USUARIO ESTÁ EN EL DERECHO DE ESCOGER SU PROPIA COMPRA.
 
 */
 
@@ -260,5 +260,5 @@ function actualizarTotalCarrito(){
     *AGREGADA FUNCIÓN SUMAR ITEM AL CARRITO.
     *AGREGADA FUNCIÓN DE RESTAR ITEM DEL CARRITO.
     *AGREGADO AJUSTES EN LA SUMA DE CANTIDAD DE LOS CARRITOS.
-
+    *AGREGADO CARRITO COMPLETO A UN LADO.
     */
