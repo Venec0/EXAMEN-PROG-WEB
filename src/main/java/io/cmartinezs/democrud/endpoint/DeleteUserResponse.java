@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetUserResponse {
+public class DeleteUserResponse {
   private User user;
 }
