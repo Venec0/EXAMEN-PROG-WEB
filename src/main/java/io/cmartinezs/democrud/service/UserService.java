@@ -39,4 +39,17 @@ public class UserService {
     }
     return null;
   }
+
+  public User updateUserById(int id, User modifiedUser) {
+    List<User> users = getListUsers();
+    for (User user : users) {
+      if (user.getId() == id) {
+        user.setPassword(modifiedUser.getPassword());
+        user.setUsername(modifiedUser.getUsername());
+        user.setEmail(modifiedUser.getEmail());
+        return user;
+      }
+    }
+    return null;
+  }
 }

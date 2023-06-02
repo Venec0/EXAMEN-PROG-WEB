@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,18 @@ public class UserController {
     PostUserResponse response = new PostUserResponse();
     response.setId(id);
     return ResponseEntity.ok(response);
+  }
+
+  @PutMapping("/users/{id}")
+  public ResponseEntity<PutUserResponse> put(@PathVariable("id") int id, @RequestBody User user){
+    User updated = service.updateUserById(id, user);
+    if (updated != null) {
+      PutUserResponse response = new PutUserResponse();
+      response.setUser(updated);
+      return ResponseEntity.ok(response);
+    } else {
+      return ResponseEntity.badRequest().build();
+    }
   }
 
   @DeleteMapping("/users/{id}")
