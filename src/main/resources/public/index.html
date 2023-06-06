@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumo API</title>
+</head>
+<body>
+<h1>Lista de usuarios</h1>
+<a href="/new-user.html">Nuevo Usuario</a>
+<table id="users">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Email</th>
+        <th>Acción</th>
+    </tr>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        let url = "/users"
+        $.get(url, function (json) {
+            $.each(json.users, function (index, element) {
+                var idButton = "button_" + element.id
+                var idRow = "row_" + element.id
+                var row = "<tr id='" + idRow + "'>" +
+                    "<td>" + element.id + "</td>" +
+                    "<td>" + element.username + "</td>" +
+                    "<td>" + element.password + "</td>" +
+                    "<td>" + element.email + "</td>" +
+                    "<td>" +
+                    "<button id='" + idButton + "'>Eliminar</button>" +
+                    "</td>" +
+                    "</tr>"
+                $("#users").append(row)
+                $("#" + idButton).click(function () {
+                    $.ajax({
+                        url: '/users/' + element.id,
+                        type: 'DELETE',
+                        success: function (result) {
+                            $("#" + idRow).hide()
+                        }
+                    });
+                })
+            })
+        })
+    })
+</script>
+</body>
