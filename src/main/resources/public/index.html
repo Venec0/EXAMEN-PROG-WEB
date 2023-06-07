@@ -16,7 +16,7 @@
             <a class="btn btn-primary" href="/new-user.html">Nuevo Usuario</a>
             <table id="users" class="table">
                 <tr>
-                    <th>ID</th>
+                    <th># ID</th>
                     <th>Username</th>
                     <th>Password</th>
                     <th>Email</th>
@@ -46,18 +46,15 @@
                     "<td>" + element.password + "</td>" +
                     "<td>" + element.email + "</td>" +
                     "<td>" +
-                    "<button class='btn btn-danger' id='" + idBtnDel + "'>Eliminar</button>" +
-                    "<button class='btn btn-success' id='" + idBtnUpd + "'>Modificar</button>" +
+                    "<a class='btn btn-danger' id='" + idBtnDel + "' href='/'>Eliminar</a>" +
+                    "<a class='btn btn-success' href='/update-user.html?id=" + element.id  + "'>Modificar</a>" +
                     "</td>" +
                     "</tr>"
                 $("#users").append(row)
                 $("#" + idBtnDel).click(function () {
                     $.ajax({
                         url: '/users/' + element.id,
-                        type: 'DELETE',
-                        success: function (result) {
-                            $("#" + idRow).hide()
-                        }
+                        type: 'DELETE'
                     });
                 })
             })

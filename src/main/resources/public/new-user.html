@@ -5,16 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-<h1>Nuevo usuario</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Nuevo usuario</h1>
+            <form>
+                <div class="mb-3 row">
+                    <label for="username" class="col-sm-2 col-form-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="email" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" name="email">
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <div class="col-sm-12">
+                        <input type="button" id="save" class="btn btn-primary" value="Guardar">
+                        <a href="/" class="btn btn-secondary">Lista de usuarios</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+        });
 
+        $("#save").click(function (){
+            let data = {}
+            data.username = $("#username").val()
+            data.password = $("#password").val()
+            data.email = $("#email").val()
+            $.post("/users", JSON.stringify(data), function(json, status, jqxhr){
+                alert(status)
+            }, 'json')
+        })
     })
 </script>
 </body>
