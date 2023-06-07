@@ -37,10 +37,9 @@
         let url = "/users"
         $.get(url, function (json) {
             $.each(json.users, function (index, element) {
-                var idBtnDel = "btn_del" + element.id
-                var idBtnUpd = "btn_upd" + element.id
-                var idRow = "row_" + element.id
-                var row = "<tr id='" + idRow + "'>" +
+                let idBtnDel = "btn_del" + element.id
+                let idRow = "row_" + element.id
+                let row = "<tr id='" + idRow + "'>" +
                     "<td>" + element.id + "</td>" +
                     "<td>" + element.username + "</td>" +
                     "<td>" + element.password + "</td>" +
