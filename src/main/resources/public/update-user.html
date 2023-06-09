@@ -52,17 +52,37 @@
 <script>
     $(document).ready(function () {
         $.ajaxSetup({
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' }
         });
 
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
 
-        let url = "/users/" + id
+        const url = "/users/" + id
         $.get(url, function(json){
             $("#username").val(json.user.username)
             $("#password").val(json.user.password)
             $("#email").val(json.user.email)
+        })
+
+        $("#save").click(function (){
+            let data = {}
+            data.username = $("#username").val()
+            data.password = $("#password").val()
+            data.email = $("#email").val()
+
+            let ajaxSettings = {}
+            ajaxSettings.url = url
+            ajaxSettings.type = "PUT"
+            ajaxSettings.data = JSON.stringify(data)
+            ajaxSettings.dataType = "json"
+            ajaxSettings.success = function(json, status, jqxhr){
+                alert(status)
+            }
+
+            $.ajax(ajaxSettings)
         })
     })
 </script>
