@@ -2,13 +2,31 @@ package io.cmartinezs.democrud.service;
 
 import io.cmartinezs.democrud.endpoint.User;
 import io.cmartinezs.democrud.repository.FakeDataBase;
+import io.cmartinezs.democrud.repository.UserRepository;
+import io.cmartinezs.democrud.repository.model.UserEntity;
+import java.util.ArrayList;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
 public class UserService {
+
+  private final UserRepository userRepository;
+
   public List<User> getListUsers() {
-    return FakeDataBase.getUsers();
+    List<UserEntity> all = (List<UserEntity>)userRepository.findAll();
+    List<User> users = new ArrayList<>();
+    for(UserEntity ue: all){
+      User user = new User();
+      user.setId(ue.getId());
+      user.setUsername(ue.getUsername());
+      user.setPassword(ue.getPassword());
+      user.setEmail(ue.getEmail());
+      users.add(user);
+    }
+    return users;
   }
 
   public User getUserById(int id) {
