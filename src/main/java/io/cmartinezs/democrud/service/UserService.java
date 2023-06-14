@@ -6,6 +6,7 @@ import io.cmartinezs.democrud.repository.UserRepository;
 import io.cmartinezs.democrud.repository.model.UserEntity;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,12 +31,20 @@ public class UserService {
   }
 
   public User getUserById(int id) {
-    List<User> users = getListUsers();
-    for (User user : users) {
-      if (user.getId() == id) {
-        return user;
-      }
+
+    Optional<UserEntity> byId = userRepository.findById(id);
+
+    boolean present = byId.isPresent();
+    if(present){
+      UserEntity ue = byId.get();
+      User user = new User();
+      user.setId(ue.getId());
+      user.setUsername(ue.getUsername());
+      user.setPassword(ue.getPassword());
+      user.setEmail(ue.getEmail());
+      return user;
     }
+
     return null;
   }
 
