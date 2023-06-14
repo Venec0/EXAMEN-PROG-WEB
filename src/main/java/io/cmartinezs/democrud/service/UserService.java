@@ -31,11 +31,8 @@ public class UserService {
   }
 
   public User getUserById(int id) {
-
     Optional<UserEntity> byId = userRepository.findById(id);
-
-    boolean present = byId.isPresent();
-    if(present){
+    if(byId.isPresent()){
       UserEntity ue = byId.get();
       User user = new User();
       user.setId(ue.getId());
@@ -49,11 +46,12 @@ public class UserService {
   }
 
   public int addUser(User user) {
-    List<User> users = getListUsers();
-    int id = users.size() + 1;
-    user.setId(id);
-    users.add(user);
-    return id;
+    UserEntity newUser = new UserEntity();
+    newUser.setUsername(user.getUsername());
+    newUser.setEmail(user.getEmail());
+    newUser.setPassword(user.getPassword());
+    UserEntity saved = userRepository.save(newUser);
+    return saved.getId();
   }
 
   public User deleteUserById(int id) {
