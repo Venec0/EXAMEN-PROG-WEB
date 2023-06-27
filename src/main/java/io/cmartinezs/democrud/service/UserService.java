@@ -1,7 +1,6 @@
 package io.cmartinezs.democrud.service;
 
 import io.cmartinezs.democrud.endpoint.User;
-import io.cmartinezs.democrud.repository.FakeDataBase;
 import io.cmartinezs.democrud.repository.UserRepository;
 import io.cmartinezs.democrud.repository.model.UserEntity;
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ public class UserService {
       user.setUsername(ue.getUsername());
       user.setPassword(ue.getPassword());
       user.setEmail(ue.getEmail());
+      user.setRole(ue.getRole().getName());
       users.add(user);
     }
     return users;

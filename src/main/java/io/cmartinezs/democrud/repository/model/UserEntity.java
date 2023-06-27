@@ -1,11 +1,7 @@
 package io.cmartinezs.democrud.repository.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,4 +23,8 @@ public class UserEntity {
 
   @Column(name = "email", nullable = false, length = 100)
   private String email;
+
+  @ManyToOne
+  @JoinColumn(name = "role_id", nullable = false)
+  private RoleEntity role;
 }
