@@ -1,63 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consumo API</title>
+    <title>LOGIN & REGISTRATION | Memoriesdistro</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
+
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>Lista de usuarios</h1>
-            <a class="btn btn-primary" href="/new-user.html">Nuevo Usuario</a>
-            <table id="users" class="table">
-                <tr>
-                    <th># ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Acción</th>
-                </tr>
-            </table>
-        </div>
+<header>
+    <h2 class="logo">Logo</h2>
+    <nav class="navigation">
+        <a href="#">Inicio</a>
+        <a href="#">Acerca de</a>
+        <a href="#">Contacto</a>
+        <button class="btnLogin-popup">Login</button>
+    </nav>
+</header>
+
+<div class="fadein">
+    <img id="f3" src="IMG/Queen_Background.jpg">
+    <img id="f2" src="IMG/MJ_Background.jpg">
+    <img id="f1" src="IMG/Daryl_Hall_John_Oates_Background.jpg">
+    <div class="wrapper">
+            <span class="icon-close">
+                <ion-icon name="close-outline"></ion-icon>
+            </span>
+
+        <form id="login-form" action="login.php" method="post">
+            <div class="form-box login">
+                <h2>Login</h2>
+                <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                    <input type="password" name="password" maxlength="20" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input id="RecuerdameCheckbox" type="checkbox"> Recuérdame.</label>
+                    <a href="#">Olvidé mi contraseña</a>
+                </div>
+                <button type="submit" class="btnLOGIN">Login</button>
+                <div class="login-register">
+                    <p>¿No tienes una cuenta?
+                        <a href="#" class="register-link">Registrarse</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+
+        <form id="register-form" action="register.php" method="post">
+            <div class="form-box register">
+                <h2>Registro</h2>
+                <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                    <input type="text" name="name" required>
+                    <label>Nombre</label>
+                </div>
+                <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                    <input type="password" name="password" maxlength="20" required>
+                    <label>Contraseña</label>
+                </div>
+                <button type="submit" class="btnREGISTER">Registrar</button>
+                <div class="login-register">
+                    <p>¿Ya tienes una cuenta? <a href="#" class="login-link">Iniciar sesión</a></p>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="validaciones.js"></script>
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function () {
-        let url = "/users"
-        $.get(url, function (json) {
-            $.each(json.users, function (index, element) {
-                let idBtnDel = "btn_del" + element.id
-                let idRow = "row_" + element.id
-                let row = "<tr id='" + idRow + "'>" +
-                    "<td>" + element.id + "</td>" +
-                    "<td>" + element.username + "</td>" +
-                    "<td>" + element.password + "</td>" +
-                    "<td>" + element.email + "</td>" +
-                    "<td>" +
-                    "<a class='btn btn-danger' id='" + idBtnDel + "' href='/'>Eliminar</a>" +
-                    "<a class='btn btn-success' href='/update-user.html?id=" + element.id  + "'>Modificar</a>" +
-                    "</td>" +
-                    "</tr>"
-                $("#users").append(row)
-                $("#" + idBtnDel).click(function () {
-                    $.ajax({
-                        url: '/users/' + element.id,
-                        type: 'DELETE'
-                    });
-                })
-            })
-        })
-    })
+        crossorigin="anonymous">
 </script>
+<script>
+        $(document).ready(function() {
+            let url = "/users";
+            $.get(url, function(json) {
+                $.each(json.users, function(index, element) {
+                    let idBtnDel = "btn_del" + element.id;
+                    let idRow = "row_" + element.id;
+                    let row = "<tr id='" + idRow + "'>" +
+                        "<td>" + element.id + "</td>" +
+                        "<td>" + element.username + "</td>" +
+                        "<td>" + element.password + "</td>" +
+                        "<td>" + element.email + "</td>" +
+                        "<td>" +
+                        "<a class='btn btn-danger' id='" + idBtnDel + "' href='/'>Eliminar</a>" +
+                        "<a class='btn btn-success' href='/update-user.html?id=" + element.id + "'>Modificar</a>" +
+                        "</td>" +
+                        "</tr>";
+                    $("#users").append(row);
+                    $("#" + idBtnDel).click(function() {
+                        $.ajax({
+                            url: '/users/' + element.id,
+                            type: 'DELETE'
+                        });
+                    });
+                });
+            });
+        });
+    </script>
 </body>
+
+</html>
