@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Recordad</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+    </head>
+    <body>
+        <div class="container">
+          <h2>Recuperar Contraseña</h2>
+          <p>Ingresa tu nombre de usuario o dirección de correo electrónico para recuperar tu contraseña.</p>
+          <form id="reset-password-form">
+            <input type="text" id="username" placeholder="Nombre de Usuario o Correo Electrónico" required>
+            <button type="submit">Recuperar Contraseña</button>
+          </form>
+          <div id="reset-password-section" style="display: none;">
+            <h3>Restablecer Contraseña</h3>
+            <form id="change-password-form">
+              <input type="password" id="old-password" placeholder="Contraseña Anterior" required>
+              <input type="password" id="new-password" placeholder="Nueva Contraseña" required>
+              <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
+              <button type="submit">Cambiar Contraseña</button>
+            </form>
+          </div>
+          <p class="error" id="error-message"></p>
+        </div>
+        <script src="js/reset-password.js"></script>
+      </body>
+</html>
