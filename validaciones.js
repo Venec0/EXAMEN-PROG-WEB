@@ -1,22 +1,33 @@
 $(document).ready(function() {
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+
+    registerLink.addEventListener('click', () => {
+        wrapper.classList.add('activate');
+    });
+
+    loginLink.addEventListener('click', () => {
+        wrapper.classList.add('activate');
+    });
     $("#unico").click(function() {
         var email = $("input[type='email']").val();
         var password = $("input[type='password']").val();
         var error_message = "";
-        
+
         if (email == "") {
             error_message += "El campo de correo electrónico es obligatorio.\n";
         }
-        
+
         if (password == "") {
             error_message += "El campo de contraseña es obligatorio.\n";
         }
-        
+
         if (error_message != "") {
             alert(error_message);
             return false;
         } else {
-            alert('¡Inicio de sesión exitoso!')
+            alert('¡Inicio de sesión exitoso!');
             window.location.href = "index2.html";
         }
     });
@@ -43,7 +54,7 @@ $(document).ready(function() {
     }
     // Escuchar el evento de cambio del checkbox
     RecuerdameCheckbox.addEventListener("change", function() {
-    // Guardar el estado del checkbox en el Local Storage
-    localStorage.setItem("RememberMe", RecuerdameCheckbox.checked);
+        // Guardar el estado del checkbox en el Local Storage
+        localStorage.setItem("RememberMe", RecuerdameCheckbox.checked);
     });
 });
