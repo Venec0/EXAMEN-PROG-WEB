@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Registro</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="CSS/styles.css">
+</head>
+<header>
+  <h2 class="logo">Logo</h2>
+  <nav class="navigation">
+    <a href="#">Inicio</a>
+    <a href="#">Acerca de</a>
+    <a href="#">Contacto</a>
+    <button class="btnLogin-popup">Login</button>
+  </nav>
+</header>
+<body>
+    <div class="container">
+      <h2>Registro</h2>
+      <form id="signin-form">
+        <input type="text" id="new-username" placeholder="Nuevo Usuario" required>
+        <input type="text" id="name" placeholder="Nombre" required>
+        <input type="password" id="new-password" placeholder="Nueva Contraseña" required>
+        <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
+        <button type="button" onclick="registrarUsuario()">Registrarse</button>
+    </form>
+      <p id="registration-message" class="registration-message"></p>
+      <p>¿Ya tienes una cuenta? <a href="login.html">Inicia Sesión</a></p>
+    </div>
+    <script src="js/signin.js"></script>
+  </body>
+  
+</html>
