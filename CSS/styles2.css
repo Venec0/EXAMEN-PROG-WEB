@@ -377,4 +377,19 @@ input[type="submit"]:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-  
+
+.generate-receipt-button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: #000;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+}   

@@ -39,7 +39,7 @@ function ready(){
 
     //SE AGREGA FUNCIONALIDAD AL BOTÓN "AGREGAR AL CARRITO"
 
-    var botonesAgregarAlCarrito = document.getElementsByClassName('buttom-item');
+    var botonesAgregarAlCarrito = document.getElementsByClassName('button-item');
     for(var i=0;i<botonesAgregarAlCarrito.length; i++){
         var button = botonesAgregarAlCarrito[i];
         button.addEventListener('click',agregarAlCarritoClicked);
@@ -144,6 +144,32 @@ function agregarItemAlCarrito(titulo, precio, imagenSrc){
             return;
         }
     }
+
+    document.querySelector('.generate-receipt-button').addEventListener('click', generarComprobante);
+
+function generarComprobante() {
+    // Obtiene la información del carrito
+    var carritoItems = document.getElementsByClassName('shopping-cart-items')[0].getElementsByClassName('item-cart');
+    var resumen = "RESUMEN DE COMPRA:\n\n";
+
+    for (var i = 0; i < carritoItems.length; i++) {
+        var item = carritoItems[i];
+        var titulo = item.querySelector('.cart-item-title').innerText;
+        var cantidad = item.querySelector('.item-cart-amount').value;
+        var precio = item.querySelector('.cart-item-price').innerText;
+        resumen += titulo + " x " + cantidad + ": " + precio + "\n";
+    }
+
+    // Calcula el total del carrito
+    var total = document.querySelector('.cart-total-price').innerText;
+    resumen += "\nTOTAL: " + total;
+
+    // Crea una ventana emergente con el comprobante
+    var comprobanteWindow = window.open('', '_blank');
+    comprobanteWindow.document.open();
+    comprobanteWindow.document.write('<html><body><pre>' + resumen + '</pre></body></html>');
+    comprobanteWindow.document.close();
+}
     
     //SE AGREGA EL ITEM AL CARRITO.
 
@@ -223,7 +249,7 @@ function actualizarTotalCarrito(){
 //VALIDACIÓN QUE INDICA QUE SE AGREGÓ UN ITEM AL CARRITO.
 
     $(document).ready(function() {
-        $('.buttom-item').click(function() {
+        $('.button-item').click(function() {
           var itemTitle = $(this).siblings('.item-title').text();
           var itemPrice = $(this).siblings('.item-price').text();
           alert('Has agregado "' + itemTitle + '" al carrito. Precio: ' + itemPrice);

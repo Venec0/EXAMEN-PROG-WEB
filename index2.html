@@ -53,21 +53,6 @@
                 <button class="button-item" onclick="addToCart('Bring Me The Horizon Sempiternal')">AGREGAR AL CARRITO</button>
             </div>
         </div>
-        <form action="agregar_articulo.php" method="POST">
-            <label for="nombre">Nombre del artículo:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            <br>
-        
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
-            <br>
-        
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio" required>
-            <br>
-        
-            <input type="submit" value="AGREGAR ARTÍCULO">
-        </form>
         <div class="shopping-cart">
             <div class="shopping-cart-header">
                 <h2>TU CARRITO</h2>
@@ -116,6 +101,7 @@
                 </div>
                 <button class="pay-button">REALIZAR PAGO<i class="fa-solid fa-bag-shopping"></i></button>
             </div>
+            <button class="generate-receipt-button">GENERAR COMPROBANTE</button>
         </div>
     </section>
     
